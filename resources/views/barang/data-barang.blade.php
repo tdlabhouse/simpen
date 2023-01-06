@@ -13,6 +13,7 @@
                         <table class="table center-aligned-table">
                             <thead>
                                 <tr class="text-primary">
+                                    <th>#</th>
                                     <th>Kode</th>
                                     <th>Nama Barang</th>
                                     <th>Satuan</th>
@@ -23,22 +24,24 @@
                             <tbody>
                                 @foreach ($dtBarang as $db)
                                 <tr class="">
+                                    <td>{{$loop->iteration}}</td>
                                     <td>{{$db->kd_barang}}</td>
                                     <td>{{$db->nm_barang}}</td>
                                     <td>{{$db->hrg_satuan}}</td>
                                     <td>{{$db->satuan}}</td>
                                     <td>{{$db->jenis_barang}}</td>
-                                    <td><a href="#" class="btn btn-primary btn-sm">Manage</a></td>
-                                    <td><a href="#" class="btn btn-danger btn-sm">Remove</a></td>
+                                    <td><a href="{{url('edit-barang', $db->kd_barang)}}" class="btn btn-primary btn-sm">Edit</a></td>
+                                    <td><a href="{{url('delete-barang', $db->kd_barang)}}" class="btn btn-danger btn-sm">Delete</a></td>
                                 </tr>
                                 @endforeach
                             </tbody>
+
                         </table>
+                        {{ $dtBarang->links()}}
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-@include('sweetalert::alert')
 @endsection
