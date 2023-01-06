@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BagianController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
@@ -38,4 +39,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('edit-barang/{kode}', [BarangController::class, 'editbarang'])->name('edit-barang');
     Route::post('update-barang/{kode}', [BarangController::class, 'updatebarang'])->name('update-barang');
     Route::get('delete-barang/{kode}', [BarangController::class, 'deletebarang'])->name('delete-barang');
+
+    // Bagian
+    Route::get('bagian', [BagianController::class, 'index'])->name('bagian');
+    Route::get('add-bagian', [BagianController::class, 'addbagian'])->name('add-bagian');
+    Route::post('simpan-bagian', [BagianController::class, 'simpanbagian'])->name('simpan-bagian');
+    Route::get('edit-bagian/{kode}', [BagianController::class, 'editbagian'])->name('edit-bagian');
+    Route::post('update-bagian/{kode}', [BagianController::class, 'updatebagian'])->name('update-bagian');
+    Route::get('delete-bagian/{kode}', [BagianController::class, 'deletebagian'])->name('delete-bagian');
 });

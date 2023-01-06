@@ -7,13 +7,14 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
+
 class BarangController extends Controller
 {
     //
     public function index(Request $request)
     {
         // 
-        $dtBarang = model_barang::paginate(2);
+        $dtBarang = model_barang::all()->sortBy('kd_barang');
         return view('barang.data-barang', compact('dtBarang'));
     }
     public function addbarang(Request $request)
@@ -27,7 +28,7 @@ class BarangController extends Controller
 
         try {
             $validator = Validator::make($request->all(), [
-                'hargasatuan' => 'required|integer',
+                'hargasatuan' => 'required|regex:/^\d+(\.\d{1,2})?$/',
             ]);
 
             if ($validator->fails()) {

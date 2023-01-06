@@ -7,19 +7,25 @@
          <span class="online"></span>
      </div>
      <ul class="nav">
-         <li class="nav-item active">
+         <li class="nav-item {{ (Route::currentRouteName()=== 'dashboard') ? 'active' : '' }}">
              <a class="nav-link" href="{{asset('/dashboard')}}">
                  <img src="{{asset('star/images/icons/1.png')}}" alt="">
                  <span class="menu-title">Dashboard</span>
              </a>
          </li>
-         <li class="nav-item">
+         <li class="nav-item {{ (Route::currentRouteName()=== 'barang') ? 'active' : '' }}">
              <a class="nav-link" href="{{asset('/barang')}}">
                  <img src="{{asset('star/images/icons/5.png')}}" alt="">
                  <span class="menu-title">Master Barang</span>
              </a>
          </li>
-
+         <li class="nav-item {{ (Route::currentRouteName()=== 'bagian') ? 'active' : '' }}">
+             <a class="nav-link" href="{{asset('/bagian')}}">
+                 <img src="{{asset('star/images/icons/9.png')}}" alt="">
+                 <span class="menu-title">Master Bagian</span>
+             </a>
+         </li>
+         <hr>
          <li class="nav-item">
              <a class="nav-link" href="{{asset('/logout')}}">
                  <img src="{{asset('star/images/icons/10.png')}}" alt="">
