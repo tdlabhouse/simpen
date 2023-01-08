@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\model_bagian;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\DB;
 
 class BagianController extends Controller
@@ -106,5 +107,11 @@ class BagianController extends Controller
         } catch (\Exception $e) {
             return back()->with('toast_error', 'Gagal!');
         }
+    }
+
+    public function combobagian()
+    {
+        $katdb = model_bagian::lists('kd_bagian', 'nm_bagian');
+        return View::make('combo')->with('dcom', $katdb);
     }
 }

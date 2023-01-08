@@ -13,16 +13,36 @@
                  <span class="menu-title">Dashboard</span>
              </a>
          </li>
-         <li class="nav-item {{ (Route::currentRouteName()=== 'barang') ? 'active' : '' }}">
+         <hr>
+         <li class="nav-item {{ (Route::currentRouteName()=== 'barang' || Route::currentRouteName()=== 'add-barang' || Route::currentRouteName()=== 'edit-barang') ? 'active' : '' }}">
              <a class="nav-link" href="{{asset('/barang')}}">
                  <img src="{{asset('star/images/icons/5.png')}}" alt="">
                  <span class="menu-title">Master Barang</span>
              </a>
          </li>
-         <li class="nav-item {{ (Route::currentRouteName()=== 'bagian') ? 'active' : '' }}">
+         <li class="nav-item {{ (Route::currentRouteName()=== 'bagian' || Route::currentRouteName()=== 'add-bagian' || Route::currentRouteName()=== 'edit-bagian') ? 'active' : '' }}">
              <a class="nav-link" href="{{asset('/bagian')}}">
                  <img src="{{asset('star/images/icons/9.png')}}" alt="">
                  <span class="menu-title">Master Bagian</span>
+             </a>
+         </li>
+         <li class="nav-item {{ (Route::currentRouteName()=== 'supplier' || Route::currentRouteName()=== 'add-supplier' || Route::currentRouteName()=== 'edit-supplier') ? 'active' : '' }}">
+             <a class="nav-link" href="{{asset('/supplier')}}">
+                 <img src="{{asset('star/images/icons/2.png')}}" alt="">
+                 <span class="menu-title">Master Supplier</span>
+             </a>
+         </li>
+         <hr>
+         <li class="nav-item {{ (Route::currentRouteName()=== 'fpb' ) ? 'active' : '' }}">
+             <a class="nav-link" href="{{asset('/fpb')}}">
+                 <img src="{{asset('star/images/icons/3.png')}}" alt="">
+                 <span class="menu-title">Permintaan Barang</span>
+             </a>
+         </li>
+         <li class="nav-item {{ (Route::currentRouteName()=== 'fpb' ) ? 'active' : '' }}">
+             <a class="nav-link" href="{{asset('/fpb')}}">
+                 <img src="{{asset('star/images/icons/3.png')}}" alt="">
+                 <span class="menu-title">Permintaan Barang</span>
              </a>
          </li>
          <hr>

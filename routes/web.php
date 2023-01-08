@@ -4,6 +4,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BagianController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\FpbController;
+use App\Http\Controllers\SuplierController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -47,4 +49,17 @@ Route::middleware(['auth'])->group(function () {
     Route::get('edit-bagian/{kode}', [BagianController::class, 'editbagian'])->name('edit-bagian');
     Route::post('update-bagian/{kode}', [BagianController::class, 'updatebagian'])->name('update-bagian');
     Route::get('delete-bagian/{kode}', [BagianController::class, 'deletebagian'])->name('delete-bagian');
+
+    // Supplier
+    Route::get('supplier', [SuplierController::class, 'index'])->name('supplier');
+    Route::get('add-supplier', [SuplierController::class, 'addsupplier'])->name('add-supplier');
+    Route::post('simpan-supplier', [SuplierController::class, 'simpansupplier'])->name('simpan-supplier');
+    Route::get('edit-supplier/{kode}', [SuplierController::class, 'editsupplier'])->name('edit-supplier');
+    Route::post('update-supplier/{kode}', [SuplierController::class, 'updatesupplier'])->name('update-supplier');
+    Route::get('delete-supplier/{kode}', [SuplierController::class, 'deletesupplier'])->name('delete-supplier');
+
+    // FPB
+    Route::get('fpb', [FpbController::class, 'index'])->name('fpb');
+    Route::get('add-fpb', [FpbController::class, 'addfpb'])->name('add-fpb');
+    Route::post('simpan-fpb', [FpbController::class, 'simpanfpb'])->name('simpan-fpb');
 });
