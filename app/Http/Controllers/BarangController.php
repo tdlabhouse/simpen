@@ -17,6 +17,18 @@ class BarangController extends Controller
         $dtBarang = model_barang::all()->sortBy('kd_barang');
         return view('barang.data-barang', compact('dtBarang'));
     }
+    public function apibarang(Request $request)
+    {
+        // 
+        $dtBarang = model_barang::all()->sortBy('kd_barang');
+        foreach ($dtBarang as $db) {
+            $data[] = array(
+                'kode' => $db->kd_barang,
+                'name' => $db->nm_barang,
+            );
+        }
+        return $data;
+    }
     public function addbarang(Request $request)
     {
         // 

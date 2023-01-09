@@ -2,66 +2,57 @@
 
 @section('content')
 <div class="content-wrapper">
-    <h3 class="page-heading mb-4">Permintaan Barang</h3>
+    <h3 class="page-heading mb-4">Tambah PO</h3>
     <div class="row mb-2">
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title mb-4">Form Permintaan Barang</h5>
-                    <form action="{{route('simpan-fpb')}}" method="post" class="forms-sample">
+                    <h5 class="card-title mb-4">Form Purchase Order</h5>
+                    <form action="" method="post" class="forms-sample">
                         @csrf
                         <div class="form-group">
-                            <label for="bagian">Pilih Bagian</label>
-                            <select class="form-control  p-input" id="bagian" name="bagian" placeholder="pilih bagian">
-                                <option value="">Pilih Bagian </option>
-                                @foreach ($data as $key => $value)
-                                <option value="{{ $key }}"> {{ $value }} </option>
-                                @endforeach
-                            </select>
-                        </div>
-
-                        <!-- <div class="form-group">
-                            <label for="barang">Pilih Barang</label>
-                            <!-- <select class="form-control  p-input" id="barang" name="barang" placeholder="pilih barang">
-                                <option value="">Pilih Barang </option>
-                                @foreach ($databrg as $key => $value)
-                                <option value="{{ $key }}"> {{ $value }} </option>
-                                @endforeach
-                            </select> -->
-                        <!-- <select name="all_country" class="form-control  p-input" id="all_country">
-                                <option value=""> — Select a country — </option>
-                            </select> -->
-                        <!-- </div>  -->
-
-                        <!-- <div class="form-group">
-                            <label for="keterangan">Keterangan</label>
-                            <input type="text" class="form-control p-input" id="keterangan" name="keterangan" placeholder="keterangan barang" required>
+                            <label for="nofpb">No FPB</label>
+                            <input type="text" class="form-control p-input" id="npfpb" name="npfpb" placeholder="No FPB" value="{{$data->no_fpb}}" required disabled>
                         </div>
                         <div class="form-group">
-                            <label for="jumlah">Jumlah</label>
-                            <input type="text" class="form-control p-input" id="jumlah" name="jumlah" placeholder="jumlah barang" required>
-                        </div> -->
+                            <label for="bagian">Bagian</label>
+                            <input type="text" class="form-control p-input" id="bagian" name="bagian" placeholder="bagian" value="{{$data->nm_bagian}}" required disabled>
+                        </div>
                         <div class="form-group">
                             <label for="pemohon">Pemohon</label>
-                            <input type="text" class="form-control p-input" id="pemohon" name="pemohon" placeholder="pemohon" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="tanggal">Tanggal Diperlukan</label>
-                            <div class='input-group date' id='datepicker'>
-                                <input type='text' class="form-control" id="tanggal" name="tanggal" />
-                                <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-calendar"></span>
-                                </span>
-                            </div>
+                            <input type="text" class="form-control p-input" id="pemohon" name="pemohon" placeholder="pemohon" value="{{$data->pemohon}}" required disabled>
                         </div>
                         <div class="form-group">
                             <label for="tujuan">Tujuan</label>
-                            <input type="text" class="form-control p-input" id="tujuan" name="tujuan" placeholder="Tujuan" required>
+                            <input type="text" class="form-control p-input" id="tujuan" name="tujuan" placeholder="Tujuan" value="{{$data->tujuan}}" required disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="tgl">Tanggal Diperlukan</label>
+                            <input type="text" class="form-control p-input" id="tujuan" name="tujuan" placeholder="Tujuan" value="{{$data->tgl_diperlukan}}" required disabled>
                         </div>
                         <div class="form-group">
                             <input type="hidden">
                         </div>
+                        <h3>Item Diminta</h3>
 
+                        <table class="table table-bordered" id="dataitem">
+                            <tr>
+                                <th>#</th>
+                                <th>Pilih Barang</th>
+                                <th>Jumlah</th>
+                                <th>Keterangan</th>
+                            </tr>
+                            @foreach ($detail as $db)
+                            <tr>
+                                <td>{{$loop->iteration}}</td>
+                                <td>{{$db->nm_barang}}</td>
+                                <td>{{$db->jumlah}}</td>
+                                <td>{{$db->keterangan}}</td>
+
+                            </tr>
+                            @endforeach
+                        </table>
+                        <h3>Item Divalidasi</h3>
                         <table class="table table-bordered" id="dynamicAddRemove">
                             <tr>
                                 <th>Pilih Barang</th>
@@ -72,7 +63,7 @@
                                 <td>
                                     <select class="form-control  p-input" name="addMoreInputFields[0][barang]" placeholder="pilih barang">
                                         <option value="">Pilih Barang </option>
-                                        @foreach ($databrg as $key => $value)
+                                        @foreach ($brg as $key => $value)
                                         <option value="{{ $key }}"> {{ $value }} </option>
                                         @endforeach
                                     </select>

@@ -39,10 +39,10 @@
                  <span class="menu-title">Permintaan Barang</span>
              </a>
          </li>
-         <li class="nav-item {{ (Route::currentRouteName()=== 'fpb' ) ? 'active' : '' }}">
-             <a class="nav-link" href="{{asset('/fpb')}}">
+         <li class="nav-item {{ (Route::currentRouteName()=== 'po' ) ? 'active' : '' }}">
+             <a class="nav-link" href="{{asset('/po')}}">
                  <img src="{{asset('star/images/icons/3.png')}}" alt="">
-                 <span class="menu-title">Permintaan Barang</span>
+                 <span class="menu-title">Purchase Order</span>
              </a>
          </li>
          <hr>

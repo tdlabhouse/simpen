@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\model_bagian;
 use App\Models\model_fpb;
+use App\Models\model_fpb_detail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\DB;
@@ -18,13 +19,10 @@ class FpbController extends Controller
         // $dtfpb = model_fpb::all()->sortBy('no_fpb');
         $dtfpb =  DB::table('fpb as f')
             ->join('bagian as bg', 'bg.kd_bagian', 'f.kd_bagian')
-            ->join('barang as br', 'br.kd_barang', 'f.kd_barang')
             ->select(
                 'f.tgl_fpb',
                 'f.no_fpb',
                 'bg.nm_bagian',
-                'br.nm_barang',
-                'f.jumlah',
                 'f.tgl_diperlukan',
                 'f.pemohon',
                 DB::raw('(CASE f.status WHEN  1 THEN "Selesai"
@@ -53,14 +51,12 @@ class FpbController extends Controller
     public function simpanfpb(Request $request)
     {
         try {
+
             $validator = Validator::make($request->all(), [
                 'bagian' => 'required',
                 'pemohon' => 'required',
                 'tanggal' => 'required',
                 'tujuan' => 'required',
-                'barang' => 'required',
-                'keterangan' => 'required',
-                'jumlah' => 'required',
             ]);
 
             if ($validator->fails()) {
@@ -76,9 +72,12 @@ class FpbController extends Controller
                 $kode_fpb = $urut_fpb + 1;
                 $jml_kar = strlen($kode_fpb);
                 if ($jml_kar == 1) {
-                    $nol = '0';
+                    $nol = '00';
                 }
                 if ($jml_kar == 2) {
+                    $nol = '0';
+                }
+                if ($jml_kar == 3) {
                     $nol = '';
                 }
 
@@ -86,7 +85,7 @@ class FpbController extends Controller
             }
             $originalDate = $request->tanggal;
             $newDate = date("Y-m-d", strtotime($originalDate));
-            $no_fpb = 'SUP' . $yy . $kode;
+            $no_fpb = 'FP' . $yy . $kode;
             $data = new model_fpb();
             $data->no_fpb = $no_fpb;
             $data->tgl_fpb = date('Y-m-d');
@@ -94,14 +93,25 @@ class FpbController extends Controller
             $data->pemohon = $request->pemohon;
             $data->tgl_diperlukan = $newDate;
             $data->tujuan = $request->tujuan;
-            $data->kd_barang = $request->barang;
-            $data->keterangan = $request->keterangan;
-            $data->jumlah = $request->jumlah;
             $data->save();
+
+            foreach ($request->addMoreInputFields as $det) {
+                // 
+                $detail = new model_fpb_detail();
+                $detail->no_fpb = $no_fpb;
+                $detail->kd_barang = $det['barang'];
+                $detail->jumlah = $det['jumlah'];
+                $detail->keterangan = $det['keterangan'];
+                $detail->statusenabled = true;
+                $detail->save();
+            }
+
+
 
             return redirect('fpb')->with('toast_success', 'Success!');
         } catch (\Exception $e) {
-            return back()->with('toast_error', 'Gagal!');
+            // return back()->with('toast_error', 'Gagal!');
+            dd($e->getMessage());
         }
     }
 }

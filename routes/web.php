@@ -5,6 +5,7 @@ use App\Http\Controllers\BagianController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FpbController;
+use App\Http\Controllers\PoController;
 use App\Http\Controllers\SuplierController;
 use Illuminate\Support\Facades\Route;
 
@@ -62,4 +63,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('fpb', [FpbController::class, 'index'])->name('fpb');
     Route::get('add-fpb', [FpbController::class, 'addfpb'])->name('add-fpb');
     Route::post('simpan-fpb', [FpbController::class, 'simpanfpb'])->name('simpan-fpb');
+
+    // PO
+    Route::get('po', [PoController::class, 'index'])->name('po');
+    Route::get('add-po/{kode}', [PoController::class, 'addpo'])->name('add-supplier');
 });

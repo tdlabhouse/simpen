@@ -17,8 +17,6 @@
                                     <th>No FPB</th>
                                     <th>Tanggal Permintaan</th>
                                     <th>Nama Bagian</th>
-                                    <th>Nama Barang</th>
-                                    <th>Jumlah</th>
                                     <th>Tanggal Diperlukan</th>
                                     <th>Pemohon</th>
                                     <th>status</th>
@@ -28,11 +26,9 @@
                                 @foreach ($dtfpb as $db)
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
-                                    <td>{{$db->no_fpb}}</td>
+                                    <td><a href="{{url('add-po', $db->no_fpb)}}"> {{$db->no_fpb}}</a></td>
                                     <td>{{$db->tgl_fpb}}</td>
                                     <td>{{$db->nm_bagian}}</td>
-                                    <td>{{$db->nm_barang}}</td>
-                                    <td>{{$db->jumlah}}</td>
                                     <td>{{$db->tgl_diperlukan}}</td>
                                     <td>{{$db->pemohon}}</td>
                                     <td>{{$db->status}}</td>
