@@ -8,7 +8,7 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title mb-4">Purchase Order</h5>
-                    <a href="{{route('add-fpb')}}" type="button" class="btn btn-primary mr-2 mb-2 float-right">+ Purchase Order</a>
+                    <!-- <a href="{{route('add-fpb')}}" type="button" class="btn btn-primary mr-2 mb-2 float-right">+ Purchase Order</a> -->
                     <div class="table-responsive">
                         <table id="datatable" class="table table-striped table-bordered" style="width:100%">
                             <thead>
@@ -21,6 +21,7 @@
                                     <th>kepada</th>
                                     <th>note</th>
                                     <th>ppn</th>
+                                    <th>###</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -34,6 +35,7 @@
                                     <td>{{$db->kepada}}</td>
                                     <td>{{$db->note}}</td>
                                     <td>{{$db->ppn}}</td>
+                                    <td><a href="{{url('cetak-po', $db->no_po)}}" target="_blank" class="btn btn-primary btn-sm">Cetak PO</a></td>
 
                                 </tr>
                                 @endforeach

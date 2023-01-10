@@ -25,7 +25,7 @@ class FpbController extends Controller
                 'bg.nm_bagian',
                 'f.tgl_diperlukan',
                 'f.pemohon',
-                DB::raw('(CASE f.status WHEN  1 THEN "Selesai"
+                DB::raw('(CASE f.status WHEN  1 THEN "TerValidasi"
                 WHEN  0 THEN "Pending"
                 ELSE "Pending"
                 END) AS status')
@@ -66,7 +66,7 @@ class FpbController extends Controller
             $yy = substr($year, 2, 2);
             $max_fpb = DB::table('fpb')->max('no_fpb');
             if (!isset($max_fpb)) {
-                $kode = '01';
+                $kode = '001';
             } else {
                 $urut_fpb = substr($max_fpb, 5);
                 $kode_fpb = $urut_fpb + 1;
@@ -110,8 +110,8 @@ class FpbController extends Controller
 
             return redirect('fpb')->with('toast_success', 'Success!');
         } catch (\Exception $e) {
-            // return back()->with('toast_error', 'Gagal!');
-            dd($e->getMessage());
+            return back()->with('toast_error', 'Gagal!');
+            // dd($e->getMessage());
         }
     }
 }

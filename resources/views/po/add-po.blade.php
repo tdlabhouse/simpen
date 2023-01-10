@@ -8,11 +8,11 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title mb-4">Form Purchase Order</h5>
-                    <form action="" method="post" class="forms-sample">
+                    <form action="{{route('simpan-po')}}" method="post" class="forms-sample">
                         @csrf
                         <div class="form-group">
-                            <label for="nofpb">No FPB</label>
-                            <input type="text" class="form-control p-input" id="npfpb" name="npfpb" placeholder="No FPB" value="{{$data->no_fpb}}" required disabled>
+                            <label for="npfpb">No FPB</label>
+                            <input type="text" class="form-control p-input" id="npfpb" name="npfpb" placeholder="No FPB" value="{{$data->no_fpb}}" required readonly>
                         </div>
                         <div class="form-group">
                             <label for="bagian">Bagian</label>
@@ -32,6 +32,27 @@
                         </div>
                         <div class="form-group">
                             <input type="hidden">
+                        </div>
+                        <div class="form-group">
+                            <label for="supplier">Pilih Supplier</label>
+                            <select class="form-control  p-input" id="supplier" name="supplier" placeholder="pilih supplier">
+                                <option value="">Pilih Supplier </option>
+                                @foreach ($supl as $key => $value)
+                                <option value="{{ $key }}"> {{ $value }} </option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="kepada">Kepada</label>
+                            <input type="text" class="form-control p-input" id="kepada" name="kepada" placeholder="kepada" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="note">Note</label>
+                            <input type="text" class="form-control p-input" id="note" name="note" placeholder="note" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="ppn">PPN</label>
+                            <input type="text" class="form-control p-input" id="ppn" name="ppn" placeholder="ppn" required>
                         </div>
                         <h3>Item Diminta</h3>
 
@@ -61,7 +82,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <select class="form-control  p-input" name="addMoreInputFields[0][barang]" placeholder="pilih barang">
+                                    <select class="form-control  p-input" name="addMoreInputFields[0][barang]" placeholder="pilih barang" required>
                                         <option value="">Pilih Barang </option>
                                         @foreach ($brg as $key => $value)
                                         <option value="{{ $key }}"> {{ $value }} </option>
@@ -70,12 +91,12 @@
 
                                 </td>
                                 <td>
-                                    <input type="text" name="addMoreInputFields[0][jumlah]" placeholder="jumlah" class="form-control" />
+                                    <input type="text" name="addMoreInputFields[0][jumlah]" placeholder="jumlah" class="form-control" required />
                                 </td>
                                 <td>
-                                    <input type="text" name="addMoreInputFields[0][keterangan]" placeholder="keterangan" class="form-control" />
+                                    <input type="text" name="addMoreInputFields[0][keterangan]" placeholder="keterangan" class="form-control" required />
                                 </td>
-                                <td><button type="button" name="add" id="dynamic-ar" class="btn btn-outline-primary">Add Subject</button></td>
+                                <td><button type="button" name="add" id="dynamic-ar" class="btn btn-outline-primary">Add Item</button></td>
                             </tr>
                         </table>
                         <div class="form-group">
@@ -125,7 +146,7 @@
             newList += "<option value=" + listBarang.kode + ">" + listBarang.name + "</option>";
         });
 
-        $("#dynamicAddRemove").append('<tr><td><select class = "form-control  p-input" name="addMoreInputFields[' + i + '][barang]" placeholder="Enter subject" id="#all_country" />' + newList + '</select></td> <td><input type="text" name="addMoreInputFields[' + i + '][jumlah]" placeholder="jumlah" class="form-control" /></td>  <td><input type="text" name="addMoreInputFields[' + i + '][keterangan]" placeholder="keterangan" class="form-control" /> </td> <td><button type="button" class="btn btn-outline-danger remove-input-field"> Delete </button></td ></tr>');
+        $("#dynamicAddRemove").append('<tr><td><select class = "form-control  p-input" name="addMoreInputFields[' + i + '][barang]" placeholder="Enter subject" id="#all_country" required/>' + newList + '</select></td> <td><input type="text" name="addMoreInputFields[' + i + '][jumlah]" placeholder="jumlah" class="form-control" required/></td>  <td><input type="text" name="addMoreInputFields[' + i + '][keterangan]" placeholder="keterangan" class="form-control" required/> </td> <td><button type="button" class="btn btn-outline-danger remove-input-field"> Delete </button></td ></tr>');
         i++;
     });
     $(document).on('click', '.remove-input-field', function() {

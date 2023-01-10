@@ -67,4 +67,6 @@ Route::middleware(['auth'])->group(function () {
     // PO
     Route::get('po', [PoController::class, 'index'])->name('po');
     Route::get('add-po/{kode}', [PoController::class, 'addpo'])->name('add-supplier');
+    Route::post('simpan-po', [PoController::class, 'simpanpo'])->name('simpan-po');
+    Route::get('cetak-po/{kode}', [PoController::class, 'cetakpo'])->name('cetak-po');
 });

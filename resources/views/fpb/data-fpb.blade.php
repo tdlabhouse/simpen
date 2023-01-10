@@ -31,7 +31,7 @@
                                     <td>{{$db->nm_bagian}}</td>
                                     <td>{{$db->tgl_diperlukan}}</td>
                                     <td>{{$db->pemohon}}</td>
-                                    <td>{{$db->status}}</td>
+                                    <td {{ ($db->status=== 'TerValidasi' ) ? 'bgcolor="red"' : '' }}>{{$db->status}}</td>
 
                                 </tr>
                                 @endforeach

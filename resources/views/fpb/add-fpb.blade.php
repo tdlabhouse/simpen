@@ -19,28 +19,6 @@
                                 @endforeach
                             </select>
                         </div>
-
-                        <!-- <div class="form-group">
-                            <label for="barang">Pilih Barang</label>
-                            <!-- <select class="form-control  p-input" id="barang" name="barang" placeholder="pilih barang">
-                                <option value="">Pilih Barang </option>
-                                @foreach ($databrg as $key => $value)
-                                <option value="{{ $key }}"> {{ $value }} </option>
-                                @endforeach
-                            </select> -->
-                        <!-- <select name="all_country" class="form-control  p-input" id="all_country">
-                                <option value=""> — Select a country — </option>
-                            </select> -->
-                        <!-- </div>  -->
-
-                        <!-- <div class="form-group">
-                            <label for="keterangan">Keterangan</label>
-                            <input type="text" class="form-control p-input" id="keterangan" name="keterangan" placeholder="keterangan barang" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="jumlah">Jumlah</label>
-                            <input type="text" class="form-control p-input" id="jumlah" name="jumlah" placeholder="jumlah barang" required>
-                        </div> -->
                         <div class="form-group">
                             <label for="pemohon">Pemohon</label>
                             <input type="text" class="form-control p-input" id="pemohon" name="pemohon" placeholder="pemohon" required>
@@ -84,7 +62,7 @@
                                 <td>
                                     <input type="text" name="addMoreInputFields[0][keterangan]" placeholder="keterangan" class="form-control" />
                                 </td>
-                                <td><button type="button" name="add" id="dynamic-ar" class="btn btn-outline-primary">Add Subject</button></td>
+                                <td><button type="button" name="add" id="dynamic-ar" class="btn btn-outline-primary">Add Item</button></td>
                             </tr>
                         </table>
                         <div class="form-group">

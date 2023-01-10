@@ -33,7 +33,7 @@
              </a>
          </li>
          <hr>
-         <li class="nav-item {{ (Route::currentRouteName()=== 'fpb' ) ? 'active' : '' }}">
+         <li class="nav-item {{ (Route::currentRouteName()=== 'fpb' || Route::currentRouteName()=== 'add-fpb') ? 'active' : '' }}">
              <a class="nav-link" href="{{asset('/fpb')}}">
                  <img src="{{asset('star/images/icons/3.png')}}" alt="">
                  <span class="menu-title">Permintaan Barang</span>
