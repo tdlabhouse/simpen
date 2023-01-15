@@ -263,18 +263,26 @@
             <thead>
                 <th>NO</th>
                 <th>NAMA BARANG</th>
-                <th>QTY</th>
                 <th>KETERANGAN</th>
+                <th>QTY</th>
+                <th>HARGA</th>
+                <th>TOTAL</th>
             </thead>
             <tbody>
                 @foreach ($detail as $db)
                 <tr>
                     <td class="qty">{{$loop->iteration}}</td>
                     <td class="description">{{$db->nm_barang}}</td>
-                    <td class="qty">{{$db->jumlah}}</td>
                     <td class="description">{{$db->keterangan}}</td>
+                    <td class="qty">{{$db->jumlah}}</td>
+                    <td class="qty">{{$db->hrg_satuan}}</td>
+                    <td class="qty">{{$db->hrg_satuan * $db->jumlah}}</td>
                 </tr>
                 @endforeach
+                <tr>
+                    <td colspan="5">TOTAL</td>
+                    <td>{{$total}}</td>
+                </tr>
             </tbody>
         </table>
 

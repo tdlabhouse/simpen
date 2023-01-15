@@ -39,10 +39,16 @@
                  <span class="menu-title">Permintaan Barang</span>
              </a>
          </li>
-         <li class="nav-item {{ (Route::currentRouteName()=== 'po' ) ? 'active' : '' }}">
+         <li class="nav-item {{ (Route::currentRouteName()=== 'po' || Route::currentRouteName()=== 'add-po' || Route::currentRouteName()=== 'bayar-po') ? 'active' : '' }}">
              <a class="nav-link" href="{{asset('/po')}}">
                  <img src="{{asset('star/images/icons/3.png')}}" alt="">
                  <span class="menu-title">Purchase Order</span>
+             </a>
+         </li>
+         <li class="nav-item {{ (Route::currentRouteName()=== 'ttb' || Route::currentRouteName()=== 'add-ttb' || Route::currentRouteName()=== 'detail-ttb') ? 'active' : '' }}">
+             <a class="nav-link" href="{{asset('/ttb')}}">
+                 <img src="{{asset('star/images/icons/3.png')}}" alt="">
+                 <span class="menu-title">Penerimaan Barang</span>
              </a>
          </li>
          <hr>

@@ -54,20 +54,25 @@
                             <label for="ppn">PPN</label>
                             <input type="text" class="form-control p-input" id="ppn" name="ppn" placeholder="ppn" required>
                         </div>
-                        <h3>Item Diminta</h3>
 
+                        @if($data->status !=1)
+                        <h3>Item Diminta</h3>
                         <table class="table table-bordered" id="dataitem">
                             <tr>
                                 <th>#</th>
                                 <th>Pilih Barang</th>
+                                <th>Harga</th>
                                 <th>Jumlah</th>
+                                <th>Total</th>
                                 <th>Keterangan</th>
                             </tr>
                             @foreach ($detail as $db)
                             <tr>
                                 <td>{{$loop->iteration}}</td>
                                 <td>{{$db->nm_barang}}</td>
+                                <td>{{$db->hrg_satuan}}</td>
                                 <td>{{$db->jumlah}}</td>
+                                <td>{{$db->jumlah * $db->hrg_satuan}}</td>
                                 <td>{{$db->keterangan}}</td>
 
                             </tr>
@@ -104,6 +109,62 @@
                             <button type="reset" class="btn btn-danger">Reset</button>
                             <a href="{{route('fpb')}}" type="button" class="btn btn-success">Kembali</a>
                         </div>
+
+                        @else
+                        <h3>Item Diminta</h3>
+                        <table class="table table-bordered" id="dataitem">
+                            <tr>
+                                <th>#</th>
+                                <th>Nama Barang</th>
+                                <th>Keterangan</th>
+                                <th>Harga</th>
+                                <th>Jumlah</th>
+                                <th>Total</th>
+                            </tr>
+                            @foreach ($detail as $db)
+                            <tr>
+                                <td>{{$loop->iteration}}</td>
+                                <td>{{$db->nm_barang}}</td>
+                                <td>{{$db->keterangan}}</td>
+                                <td>{{$db->hrg_satuan}}</td>
+                                <td>{{$db->jumlah}}</td>
+                                <td>{{$db->jumlah * $db->hrg_satuan}}</td>
+
+                            </tr>
+                            @endforeach
+                        </table>
+
+                        <h3>Item Divalidasi</h3>
+                        <table class="table table-bordered" id="dataitem">
+                            <tr>
+                                <th>#</th>
+                                <th>Nama Barang</th>
+                                <th>Keterangan</th>
+                                <th>Jumlah</th>
+                                <th>Harga</th>
+                                <th>Sub Total</th>
+                            </tr>
+                            @foreach ($detail_po as $db)
+                            <tr>
+                                <td>{{$loop->iteration}}</td>
+                                <td>{{$db->nm_barang}}</td>
+                                <td>{{$db->keterangan}}</td>
+                                <td>{{$db->jumlah}}</td>
+                                <td>{{$db->hrg_satuan}}</td>
+                                <td>{{$db->hrg_satuan * $db->jumlah}}</td>
+
+                            </tr>
+                            @endforeach
+                            <tr>
+                                <td colspan="5" style="text-align: center; vertical-align: middle;">
+                                    <h4>TOTAL</h4>
+                                </td>
+                                <td>
+                                    <h4>{{$total}}</h4>
+                                </td>
+                            </tr>
+                        </table>
+                        @endif
                     </form>
                 </div>
             </div>

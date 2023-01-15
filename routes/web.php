@@ -7,6 +7,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FpbController;
 use App\Http\Controllers\PoController;
 use App\Http\Controllers\SuplierController;
+use App\Http\Controllers\TtbController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -66,7 +67,15 @@ Route::middleware(['auth'])->group(function () {
 
     // PO
     Route::get('po', [PoController::class, 'index'])->name('po');
-    Route::get('add-po/{kode}', [PoController::class, 'addpo'])->name('add-supplier');
+    Route::get('add-po/{kode}', [PoController::class, 'addpo'])->name('add-po');
     Route::post('simpan-po', [PoController::class, 'simpanpo'])->name('simpan-po');
+    Route::post('simpan-bayar', [PoController::class, 'simpanbayar'])->name('simpan-bayar');
     Route::get('cetak-po/{kode}', [PoController::class, 'cetakpo'])->name('cetak-po');
+    Route::get('bayar-po/{kode}', [PoController::class, 'bayarpo'])->name('bayar-po');
+
+    // TTB
+    Route::get('ttb', [TtbController::class, 'index'])->name('ttb');
+    Route::get('add-ttb', [TtbController::class, 'addttb'])->name('add-ttb');
+    Route::post('simpan-ttb', [TtbController::class, 'simpanttb'])->name('simpan-ttb');
+    Route::get('detail-ttb/{kode}', [TtbController::class, 'detailttb'])->name('detail-ttb');
 });

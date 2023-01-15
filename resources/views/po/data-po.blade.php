@@ -20,7 +20,8 @@
                                     <th>No FPB</th>
                                     <th>kepada</th>
                                     <th>note</th>
-                                    <th>ppn</th>
+                                    <th>Status</th>
+                                    <th>###</th>
                                     <th>###</th>
                                 </tr>
                             </thead>
@@ -34,7 +35,8 @@
                                     <td>{{$db->no_fpb}}</td>
                                     <td>{{$db->kepada}}</td>
                                     <td>{{$db->note}}</td>
-                                    <td>{{$db->ppn}}</td>
+                                    <td {{ ($db->status=== 'Dibayar' ) ? 'bgcolor="green"' : '' }}> {{$db->status}}</td>
+                                    <td><a href="{{url('bayar-po', $db->no_po)}}" target="_blank" class="btn btn-danger btn-sm">Pembayaran</a></td>
                                     <td><a href="{{url('cetak-po', $db->no_po)}}" target="_blank" class="btn btn-primary btn-sm">Cetak PO</a></td>
 
                                 </tr>
