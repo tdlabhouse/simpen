@@ -29,7 +29,9 @@
                                     <td>{{$db->tgl_do}}</td>
                                     <td>{{$db->no_po}}</td>
                                     <td>{{$db->NoRefDo}}</td>
-                                    <td><a href="{{url('detail-ttb', $db->no_do)}}" target="_blank" class="btn btn-primary btn-sm">Detail</a></td>
+                                    <td><a href="{{url('detail-ttb', $db->no_do)}}" class="btn btn-primary btn-sm">Detail</a>
+                                        || <a href="{{url('add-retur', $db->no_do)}}" class="btn btn-success btn-sm">Retur</a>
+                                    </td>
 
                                 </tr>
                                 @endforeach

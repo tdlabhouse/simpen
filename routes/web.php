@@ -5,7 +5,9 @@ use App\Http\Controllers\BagianController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FpbController;
+use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\PoController;
+use App\Http\Controllers\ReturController;
 use App\Http\Controllers\SuplierController;
 use App\Http\Controllers\TtbController;
 use Illuminate\Support\Facades\Route;
@@ -78,4 +80,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('add-ttb', [TtbController::class, 'addttb'])->name('add-ttb');
     Route::post('simpan-ttb', [TtbController::class, 'simpanttb'])->name('simpan-ttb');
     Route::get('detail-ttb/{kode}', [TtbController::class, 'detailttb'])->name('detail-ttb');
+
+    // Retur
+    Route::get('add-retur/{kode}', [ReturController::class, 'addretur'])->name('add-retur');
+    Route::post('simpan-retur', [ReturController::class, 'simpanretur'])->name('simpan-retur');
+
+    // Laporan
+    Route::get('laporan-permintaan-barang', [LaporanController::class, 'laporanPenermintaan'])->name('laporan-permintaan-barang');
 });

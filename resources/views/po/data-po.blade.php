@@ -35,8 +35,14 @@
                                     <td>{{$db->no_fpb}}</td>
                                     <td>{{$db->kepada}}</td>
                                     <td>{{$db->note}}</td>
-                                    <td {{ ($db->status=== 'Dibayar' ) ? 'bgcolor="green"' : '' }}> {{$db->status}}</td>
-                                    <td><a href="{{url('bayar-po', $db->no_po)}}" target="_blank" class="btn btn-danger btn-sm">Pembayaran</a></td>
+                                    <td {{ ($db->status== 'Dibayar' ) ? 'bgcolor=#00FF00'  : 'bgcolor=red' }}> {{$db->status}}</td>
+                                    <td>
+                                        @if($db->status== 'Dibayar')
+                                        <a href="{{url('bayar-po', $db->no_po)}}" class="btn btn-warning btn-sm">Invoice</a>
+                                        @else
+                                        <a href="{{url('bayar-po', $db->no_po)}}" class="btn btn-success btn-sm">Pembayaran</a>
+                                        @endif
+                                    </td>
                                     <td><a href="{{url('cetak-po', $db->no_po)}}" target="_blank" class="btn btn-primary btn-sm">Cetak PO</a></td>
 
                                 </tr>

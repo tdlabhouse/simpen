@@ -53,6 +53,13 @@
          </li>
          <hr>
          <li class="nav-item">
+             <a class="nav-link" href="{{asset('/laporan-permintaan-barang')}}" target="_blank">
+                 <img src="{{asset('star/images/icons/4.png')}}" alt="">
+                 <span class="menu-title">Laporan Permintaan<br> Barang</span>
+             </a>
+         </li>
+         <hr>
+         <li class="nav-item">
              <a class="nav-link" href="{{asset('/logout')}}">
                  <img src="{{asset('star/images/icons/10.png')}}" alt="">
                  <span class="menu-title">Logout</span>
