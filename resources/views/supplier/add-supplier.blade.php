@@ -2,12 +2,12 @@
 
 @section('content')
 <div class="content-wrapper">
-    <h3 class="page-heading mb-4">Master Bagian</h3>
+    <h3 class="page-heading mb-4">Master Supplier</h3>
     <div class="row mb-2">
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title mb-4">Tambah Data Bagian</h5>
+                    <h5 class="card-title mb-4">Tambah Data Supplier</h5>
                     <form action="{{route('simpan-supplier')}}" method="post" class="forms-sample">
                         @csrf
                         <div class="form-group">

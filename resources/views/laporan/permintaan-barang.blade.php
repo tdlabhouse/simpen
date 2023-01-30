@@ -35,11 +35,15 @@
             background-color: #04AA6D;
             color: white;
         }
+
+        img {
+            height: 80px;
+        }
     </style>
 </head>
 
 <body>
-
+    <img src="{{asset('star/img/logo.jpeg')}}" alt="">
     <h1>LAPORAN PERMINTAAN BARANG</h1>
 
     <table id="customers">

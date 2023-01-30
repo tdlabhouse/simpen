@@ -50,6 +50,7 @@ class FpbController extends Controller
 
     public function simpanfpb(Request $request)
     {
+
         try {
 
             $validator = Validator::make($request->all(), [

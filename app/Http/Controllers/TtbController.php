@@ -20,9 +20,11 @@ class TtbController extends Controller
                 'd.no_do',
                 'd.tgl_do',
                 'd.no_po',
-                'd.NoRefDo'
+                'd.NoRefDo',
+                'd.retur'
             )
             ->get();
+
         return view('do.data-do', compact('dtdo'));
     }
 

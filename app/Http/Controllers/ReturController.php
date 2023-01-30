@@ -76,6 +76,7 @@ class ReturController extends Controller
             }
         } else {
             $detail_retur = null;
+            $arrdetr = [];
         }
         return view('retur.add-retur')->with([
             'data' =>  $dtdo,
@@ -174,10 +175,76 @@ class ReturController extends Controller
                 $detail->save();
             }
 
+            $update_retur =  DB::table('do')->where('no_do',  $request->nodo)
+                ->update(
+                    [
+                        'retur' => true,
+                    ]
+                );
             return redirect('ttb')->with('toast_success', 'Success!');
         } catch (\Exception $e) {
             // return back()->with('toast_error', 'Gagal!');
             dd($e->getMessage());
         }
+    }
+
+    public function lihatretur(Request $request)
+    {
+        // 
+        $dtfpb =  DB::table('retur as r')
+            ->join('kembalikan as k', 'k.no_ret', 'r.no_ret')
+            ->join('barang as brg', 'brg.kd_barang', 'k.kd_barang')
+            ->join('do as d', 'd.no_do', 'r.no_do')
+            ->join('po as p', 'p.no_po', 'd.no_po')
+            ->join('supplier as s', 's.kd_supplier', 'p.kd_supplier')
+            ->select(
+                'r.no_ret',
+                'r.tgl_ret',
+                'r.no_do',
+                'p.no_po',
+                's.kd_supplier',
+                's.nm_supplier',
+                'brg.nm_barang',
+                'k.jml_ret',
+                'k.ket_ret'
+
+            )
+            ->orderBy('r.tgl_ret', 'desc')
+            ->get();
+
+
+        return view('retur.data-retur', compact('dtfpb'));
+    }
+
+    public function cetakretur(Request $request, $kode)
+    {
+        // 
+        $dtpo = DB::table('retur as r')
+            ->select(
+                'r.no_ret',
+                'r.tgl_ret'
+
+            )
+            ->where('r.no_ret', $kode)
+            ->first();
+
+        $kembalikan = DB::table('kembalikan as kb')
+            ->join('barang as br', 'br.kd_barang', '=', 'kb.kd_barang')
+            ->select('kb.jml_ret', 'kb.ket_ret', 'br.kd_barang', 'br.nm_barang', 'br.hrg_satuan')
+            ->where('kb.no_ret', $kode)->get();
+
+        foreach ($kembalikan as $dt) {
+            // 
+            $harga[] = $dt->hrg_satuan;
+            $jml[] = $dt->jml_ret;
+        }
+        $arr_harga = array_sum($harga);
+        $arr_jml = array_sum($jml);
+        $total =  $arr_harga * $arr_jml;
+        return view('retur.cetak-surat-retur')->with([
+            'data' => $dtpo,
+            'detail' => $kembalikan,
+            'total' => $total,
+        ]);
     }
 }

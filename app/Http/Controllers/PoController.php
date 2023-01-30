@@ -60,27 +60,28 @@ class PoController extends Controller
 
 
         $brg = DB::table('barang')->orderBy('created_at')
-            ->pluck('hrg_satuan', 'nm_barang', 'kd_barang');
+            ->pluck('nm_barang',  'kd_barang', 'hrg_satuan');
 
         $supl = DB::table('supplier')->orderBy('created_at')
             ->pluck('nm_supplier', 'kd_supplier');
 
         $po = DB::table('po')->select('no_po')->where('no_fpb', $kode)->first();
 
-        $detail_po = DB::table('po_detail as pd')
-            ->join('barang as br', 'br.kd_barang', '=', 'pd.kd_barang')
-            ->select('pd.jumlah', 'pd.keterangan', 'pd.kd_barang', 'br.nm_barang', 'br.hrg_satuan')
-            ->where('pd.no_po', $po->no_po)->where('pd.statusenabled', true)->get();
+        if (isset($po)) {
+            $detail_po = DB::table('po_detail as pd')
+                ->join('barang as br', 'br.kd_barang', '=', 'pd.kd_barang')
+                ->select('pd.jumlah', 'pd.keterangan', 'pd.kd_barang', 'br.nm_barang', 'br.hrg_satuan')
+                ->where('pd.no_po', $po->no_po)->where('pd.statusenabled', true)->get();
+            foreach ($detail_po as $dtp) {
+                // 
+                $total_jml[] = $dtp->hrg_satuan *  $dtp->jumlah;
+            }
 
-        foreach ($detail_po as $dtp) {
-            // 
-            $harga[] = $dtp->hrg_satuan;
-            $jml[] = $dtp->jumlah;
+            $total = array_sum($total_jml);
+        } else {
+            $detail_po = null;
+            $total = null;
         }
-        $arr_harga = array_sum($harga);
-        $arr_jml = array_sum($jml);
-        $total =  $arr_harga * $arr_jml;
-
         return view('po.add-po')->with([
             'data' => $dtpo,
             'detail' =>  $detail,
@@ -123,10 +124,9 @@ class PoController extends Controller
             // 
             $harga[] = $dt->hrg_satuan;
             $jml[] = $dt->jumlah;
+            $total_jml[] = $dt->hrg_satuan * $dt->jumlah;
         }
-        $arr_harga = array_sum($harga);
-        $arr_jml = array_sum($jml);
-        $total =  $arr_harga * $arr_jml;
+        $total = array_sum($total_jml);
         return view('po.bayar-po')->with([
             'data' => $dtpo,
             'detail' => $detail,
@@ -137,7 +137,6 @@ class PoController extends Controller
     public function simpanpo(Request $request)
     {
         try {
-
             $validator = Validator::make($request->all(), [
                 'npfpb' => 'required',
                 'supplier' => 'required',
@@ -211,7 +210,7 @@ class PoController extends Controller
         // 
         try {
             $validator = Validator::make($request->all(), [
-                'noref' => 'required|max:15',
+                'noref' => 'required',
                 'jmlinv' => 'required',
                 'ketinv' => 'required',
                 'nopo' => 'required',
@@ -286,15 +285,17 @@ class PoController extends Controller
             ->join('barang as br', 'br.kd_barang', '=', 'pd.kd_barang')
             ->select('pd.jumlah', 'pd.keterangan', 'pd.kd_barang', 'br.nm_barang', 'br.hrg_satuan')
             ->where('pd.no_po', $kode)->where('pd.statusenabled', true)->get();
-
+        unset($harga);
+        unset($jml);
         foreach ($detail as $dt) {
             // 
+            $total_jml[] = $dt->hrg_satuan *  $dt->jumlah;
             $harga[] = $dt->hrg_satuan;
             $jml[] = $dt->jumlah;
         }
-        $arr_harga = array_sum($harga);
-        $arr_jml = array_sum($jml);
-        $total =  $arr_harga * $arr_jml;
+        // $arr_harga = array_sum($harga);
+        // $arr_jml = array_sum($jml);
+        $total = array_sum($total_jml);
         return view('po.cetak-po')->with([
             'data' => $dtpo,
             'detail' => $detail,

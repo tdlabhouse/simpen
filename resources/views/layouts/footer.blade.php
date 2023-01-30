@@ -32,11 +32,7 @@
  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
  <script type="application/javascript" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
  <script type="application/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
- <script>
-     $(function() {
-         $("#datepicker").datepicker();
-     });
- </script>
+
  <script type="application/javascript">
      $(document).ready(function() {
          $('#datatable').DataTable();

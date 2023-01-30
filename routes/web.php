@@ -23,9 +23,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('dashboard');
-})->middleware('auth');
+Route::get('/', [DashboardController::class, 'index'])->middleware('auth');
 
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/login', [AuthController::class, 'authenticating']);
@@ -83,8 +81,15 @@ Route::middleware(['auth'])->group(function () {
 
     // Retur
     Route::get('add-retur/{kode}', [ReturController::class, 'addretur'])->name('add-retur');
+    Route::get('cetak-retur/{kode}', [ReturController::class, 'cetakretur'])->name('cetak-retur');
+    Route::get('lihat-retur/{kode}', [ReturController::class, 'lihatretur'])->name('lihat-retur');
     Route::post('simpan-retur', [ReturController::class, 'simpanretur'])->name('simpan-retur');
 
     // Laporan
+    Route::get('laporan-permintaan', [LaporanController::class, 'laporanPenermintaanGet'])->name('laporan-permintaan');
+    Route::get('laporan-penerimaan', [LaporanController::class, 'laporanPenerimaanGet'])->name('laporan-penerimaan');
+    Route::get('laporan-retur', [LaporanController::class, 'laporanReturGet'])->name('laporan-retur');
     Route::get('laporan-permintaan-barang', [LaporanController::class, 'laporanPenermintaan'])->name('laporan-permintaan-barang');
+    Route::get('laporan-penerimaan-barang', [LaporanController::class, 'laporanPenerimaan'])->name('laporan-penerimaan-barang');
+    Route::get('laporan-retur-barang', [LaporanController::class, 'laporanRetur'])->name('laporan-retur-barang');
 });

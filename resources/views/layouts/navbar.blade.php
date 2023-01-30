@@ -1,9 +1,11 @@
  <!-- partial:partials/_sidebar.html -->
  <nav class="bg-white sidebar sidebar-offcanvas" id="sidebar">
      <div class="user-info">
-         <img src="{{asset('star/images/face.jpg')}}" alt="">
-         <p class="name">Akbar</p>
-         <p class="designation">HR/GA</p>
+         <!-- <img src="{{asset('star/images/face.jpg')}}" alt=""> -->
+         <center>
+             <h5 class="name">PT Sino Indonikel Primaraya</h5>
+         </center>
+         <p class="designation">Admin</p>
          <span class="online"></span>
      </div>
      <ul class="nav">
@@ -53,9 +55,23 @@
          </li>
          <hr>
          <li class="nav-item">
-             <a class="nav-link" href="{{asset('/laporan-permintaan-barang')}}" target="_blank">
+             <a class="nav-link" href="{{asset('/laporan-permintaan')}}" target="_blank">
                  <img src="{{asset('star/images/icons/4.png')}}" alt="">
                  <span class="menu-title">Laporan Permintaan<br> Barang</span>
+             </a>
+         </li>
+
+         <li class="nav-item">
+             <a class="nav-link" href="{{asset('/laporan-penerimaan')}}" target="_blank">
+                 <img src="{{asset('star/images/icons/4.png')}}" alt="">
+                 <span class="menu-title">Laporan Penerimaan<br> Barang</span>
+             </a>
+         </li>
+         <hr>
+         <li class="nav-item">
+             <a class="nav-link" href="{{asset('/laporan-retur')}}" target="_blank">
+                 <img src="{{asset('star/images/icons/4.png')}}" alt="">
+                 <span class="menu-title">Laporan Retur<br> Barang</span>
              </a>
          </li>
          <hr>

@@ -31,6 +31,9 @@
                                     <td>{{$db->NoRefDo}}</td>
                                     <td><a href="{{url('detail-ttb', $db->no_do)}}" class="btn btn-primary btn-sm">Detail</a>
                                         || <a href="{{url('add-retur', $db->no_do)}}" class="btn btn-success btn-sm">Retur</a>
+                                        @if($db->retur == 1)
+                                        || <a href="{{url('lihat-retur', $db->no_do)}}" class="btn btn-warning btn-sm">Lihat Retur</a>
+                                        @endif
                                     </td>
 
                                 </tr>

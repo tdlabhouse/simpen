@@ -25,12 +25,7 @@
                         </div>
                         <div class="form-group">
                             <label for="tanggal">Tanggal Diperlukan</label>
-                            <div class='input-group date' id='datepicker'>
-                                <input type='text' class="form-control" id="tanggal" name="tanggal" />
-                                <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-calendar"></span>
-                                </span>
-                            </div>
+                            <input type="text" class="form-control datepicker" name="tanggal" />
                         </div>
                         <div class="form-group">
                             <label for="tujuan">Tujuan</label>
@@ -76,7 +71,31 @@
         </div>
     </div>
 </div>
+<!-- Include file jquery.min.js -->
+<script src="{{ asset('js/jquery.min.js')  }}"></script>
+<!-- <script src="js/jquery.min.js"></script> -->
 
+<!-- Include file boootstrap.min.js -->
+<script src="{{ asset('js/bootstrap.min.js')  }}"></script>
+<!-- <script src="js/bootstrap.min.js"></script> -->
+
+<!-- Include library Bootstrap Datepicker -->
+<script src="{{ asset('js/bootstrap.min.js')  }}"></script>
+<!-- <script src="js/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script> -->
+
+<!-- Include file custom.js -->
+<script src="{{ asset('js/custom.js')  }}"></script>
+<!-- <script src="js/custom.js"></script> -->
+
+<script>
+    $(document).ready(function() {
+        setDatePicker()
+        setDateRangePicker(".startdate", ".enddate")
+        setMonthPicker()
+        setYearPicker()
+        setYearRangePicker(".startyear", ".endyear")
+    })
+</script>
 
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>

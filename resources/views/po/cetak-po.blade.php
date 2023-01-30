@@ -222,12 +222,16 @@
     table.proposedWork td.description {
         text-align: left
     }
+
+    img {
+        height: 80px;
+    }
 </style>
 
 <div class="document active">
     <div class="spreadSheetGroup">
 
-
+        <img src="{{asset('star/img/logo.jpeg')}}" alt="">
         <table class="shipToFrom">
             <thead style="font-weight:bold">
                 <tr>
@@ -237,19 +241,31 @@
             </thead>
             <tbody>
                 <tr>
-                    <td contenteditable="true" style="width:50%">
+                    <!-- <td contenteditable="true" style="width:50%">
                         {{$data->nm_supplier}}<br />
                         <br />
                         {{$data->almt_supplier}}.<br />
                         {{$data->email_supplier}}<br />
                         {{$data->tlp_supplier}}
+                    </td> -->
+                    <td contenteditable="true" style="width:50%">
+                        <b>Konveksi Kaos Massal<br>
+                            konveksikaosmassal.com<br></b>
+                        enterprise@mozaik.co.id<br>
+                        0811-966-9993<br>
+                        Jalan Palem Ganda Asri
+                        Blok A3 Nomor 3
+                        Tangerang, Banten 15157
+                        Indonesia
+
                     </td>
                     <td contenteditable="true" style="width:50%">
                         PT. Sino Indonikel Primaraya <br />
-                        ATTN: <br />
-                        JL. ......<br />
-                        .......<br />
-                        Phone (310)672-3080
+                        Wisma 77 Tower 1 LT.3 <br />
+                        JL. Letjend S Parman KAV.77 SLIPI<br />
+                        JAKARTA BARAT<br />
+                        sinoindonikelprimaraya@gmail.com<br>
+                        021-53660439
                     </td>
                 </tr>
             </tbody>
@@ -301,12 +317,12 @@
                                         <p>3. Harap beri tahu kami segera jika Anda tidak dapat mengirim seperti yang ditentukan.</p>
                                         <p>4. Kirim semua korespondensi ke:</p>
                                         <p style="padding-left:20px"> PT. Sino Indonikel Primaraya
-                                            <br />
-                                            535 N. Eucalyptus Ave.
-                                            <br />
-                                            Inglewood, CA 90302
-                                            <br />
-                                            Phone (714)326-3025
+                                            PT. Sino Indonikel Primaraya <br />
+                                            Wisma 77 Tower 1 LT.3 <br />
+                                            JL. Letjend S Parman KAV.77 SLIPI<br />
+                                            JAKARTA BARAT<br />
+                                            sinoindonikelprimaraya@gmail.com<br>
+                                            021-53660439
                                         </p>
                                     </td>
                                 </tr>
