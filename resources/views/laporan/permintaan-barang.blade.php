@@ -65,8 +65,8 @@
             <td>{{$db->nm_bagian}}</td>
             <td>{{$db->tgl_diperlukan}}</td>
             <td>{{$db->pemohon}}</td>
-            <td>{{$db->jumlah}}</td>
             <td>{{$db->nm_barang}}</td>
+            <td>{{$db->jumlah}}</td>
             <td>{{$db->hrg_satuan}}</td>
             <td>{{$db->status}}</td>
         </tr>
