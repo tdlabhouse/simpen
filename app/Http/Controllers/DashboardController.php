@@ -45,9 +45,11 @@ class DashboardController extends Controller
                 // 
                 $jml_invo[] = $dtp->JmlInv;
             }
-        }
 
-        $jml_invoice = array_sum($jml_invo);
+            $jml_invoice = array_sum($jml_invo);
+        } else {
+            $jml_invoice = 0;
+        }
         return view('dashboard')->with([
             "databrg" => count($brg),
             "po" => count($dtpo),

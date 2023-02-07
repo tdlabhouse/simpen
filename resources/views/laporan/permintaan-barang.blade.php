@@ -53,6 +53,9 @@
             <th>NAMA BAGIAN</th>
             <th>TANGGAL DIPERLUKAN</th>
             <th>PEMOHON</th>
+            <th>NAMA BARANG</th>
+            <th>QTY</th>
+            <th>HARGA</th>
             <th>STATUS</th>
         </tr>
         @foreach ($dtfpb as $db)
@@ -62,6 +65,9 @@
             <td>{{$db->nm_bagian}}</td>
             <td>{{$db->tgl_diperlukan}}</td>
             <td>{{$db->pemohon}}</td>
+            <td>{{$db->jumlah}}</td>
+            <td>{{$db->nm_barang}}</td>
+            <td>{{$db->hrg_satuan}}</td>
             <td>{{$db->status}}</td>
         </tr>
         @endforeach

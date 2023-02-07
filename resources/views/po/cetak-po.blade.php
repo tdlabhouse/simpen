@@ -241,14 +241,14 @@
             </thead>
             <tbody>
                 <tr>
-                    <!-- <td contenteditable="true" style="width:50%">
+                    <td contenteditable="true" style="width:50%">
                         {{$data->nm_supplier}}<br />
                         <br />
                         {{$data->almt_supplier}}.<br />
                         {{$data->email_supplier}}<br />
                         {{$data->tlp_supplier}}
-                    </td> -->
-                    <td contenteditable="true" style="width:50%">
+                    </td>
+                    <!-- <td contenteditable="true" style="width:50%">
                         <b>Konveksi Kaos Massal<br>
                             konveksikaosmassal.com<br></b>
                         enterprise@mozaik.co.id<br>
@@ -258,7 +258,7 @@
                         Tangerang, Banten 15157
                         Indonesia
 
-                    </td>
+                    </td> -->
                     <td contenteditable="true" style="width:50%">
                         PT. Sino Indonikel Primaraya <br />
                         Wisma 77 Tower 1 LT.3 <br />

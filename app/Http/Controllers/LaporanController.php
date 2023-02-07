@@ -31,12 +31,17 @@ class LaporanController extends Controller
         // 
         $dtfpb =  DB::table('fpb as f')
             ->join('bagian as bg', 'bg.kd_bagian', 'f.kd_bagian')
+            ->join('fpb_detail as fd', 'fd.no_fpb', 'f.no_fpb')
+            ->join('barang as br', 'br.kd_barang', 'fd.kd_barang')
             ->select(
                 'f.tgl_fpb',
                 'f.no_fpb',
                 'bg.nm_bagian',
                 'f.tgl_diperlukan',
                 'f.pemohon',
+                'fd.jumlah',
+                'br.nm_barang',
+                'br.hrg_satuan',
                 DB::raw('(CASE f.status WHEN  1 THEN "TerValidasi"
                 WHEN  0 THEN "Pending"
                 ELSE "Pending"

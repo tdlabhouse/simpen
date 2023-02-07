@@ -58,7 +58,7 @@ class TtbController extends Controller
             $year = date('Y');
             $yy = substr($year, 2, 2);
             $max_do = DB::table('do')->max('no_do');
-            if (!isset($max_po)) {
+            if (!isset($max_do)) {
                 $kode = '001';
             } else {
                 $urut_do = substr($max_do, 5);
