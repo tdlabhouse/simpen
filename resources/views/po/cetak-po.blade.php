@@ -291,13 +291,13 @@
                     <td class="description">{{$db->nm_barang}}</td>
                     <td class="description">{{$db->keterangan}}</td>
                     <td class="qty">{{$db->jumlah}}</td>
-                    <td class="qty">{{$db->hrg_satuan}}</td>
-                    <td class="qty">{{$db->hrg_satuan * $db->jumlah}}</td>
+                    <td class="qty">Rp. @money($db->hrg_satuan)</td>
+                    <td class="qty">Rp. @money($db->hrg_satuan * $db->jumlah)</td>
                 </tr>
                 @endforeach
                 <tr>
                     <td colspan="5">TOTAL</td>
-                    <td>{{$total}}</td>
+                    <td>Rp. @money($total)</td>
                 </tr>
             </tbody>
         </table>

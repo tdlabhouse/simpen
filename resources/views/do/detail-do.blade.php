@@ -42,9 +42,9 @@
                             <tr>
                                 <td>{{$loop->iteration}}</td>
                                 <td>{{$db->nm_barang}}</td>
-                                <td>{{$db->hrg_satuan}}</td>
+                                <td>Rp. @money($db->hrg_satuan)</td>
                                 <td>{{$db->jumlah}}</td>
-                                <td>{{$db->jumlah * $db->hrg_satuan}}</td>
+                                <td>Rp. @money($db->jumlah * $db->hrg_satuan)</td>
                                 <td>{{$db->keterangan}}</td>
 
                             </tr>

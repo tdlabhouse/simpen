@@ -70,9 +70,9 @@
                             <tr>
                                 <td>{{$loop->iteration}}</td>
                                 <td>{{$db->nm_barang}}</td>
-                                <td>{{$db->hrg_satuan}}</td>
+                                <td>Rp. @money($db->hrg_satuan)</td>
                                 <td>{{$db->jumlah}}</td>
-                                <td>{{$db->jumlah * $db->hrg_satuan}}</td>
+                                <td>Rp. @money($db->jumlah * $db->hrg_satuan)</td>
                                 <td>{{$db->keterangan}}</td>
 
                             </tr>
@@ -126,9 +126,9 @@
                                 <td>{{$loop->iteration}}</td>
                                 <td>{{$db->nm_barang}}</td>
                                 <td>{{$db->keterangan}}</td>
-                                <td>{{$db->hrg_satuan}}</td>
+                                <td>Rp. @money($db->hrg_satuan)</td>
                                 <td>{{$db->jumlah}}</td>
-                                <td>{{$db->jumlah * $db->hrg_satuan}}</td>
+                                <td>Rp. @money($db->jumlah * $db->hrg_satuan)</td>
 
                             </tr>
                             @endforeach
@@ -150,8 +150,8 @@
                                 <td>{{$db->nm_barang}}</td>
                                 <td>{{$db->keterangan}}</td>
                                 <td>{{$db->jumlah}}</td>
-                                <td>{{$db->hrg_satuan}}</td>
-                                <td>{{$db->hrg_satuan * $db->jumlah}}</td>
+                                <td>Rp. @money($db->hrg_satuan)</td>
+                                <td>Rp. @money($db->hrg_satuan * $db->jumlah)</td>
 
                             </tr>
                             @endforeach
@@ -160,7 +160,7 @@
                                     <h4>TOTAL</h4>
                                 </td>
                                 <td>
-                                    <h4>{{$total}}</h4>
+                                    <h4>Rp. @money($total)</h4>
                                 </td>
                             </tr>
                         </table>

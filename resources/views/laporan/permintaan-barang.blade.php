@@ -67,7 +67,7 @@
             <td>{{$db->pemohon}}</td>
             <td>{{$db->nm_barang}}</td>
             <td>{{$db->jumlah}}</td>
-            <td>{{$db->hrg_satuan}}</td>
+            <td>Rp. @money($db->hrg_satuan)</td>
             <td>{{$db->status}}</td>
         </tr>
         @endforeach

@@ -28,7 +28,7 @@
                                     <td>{{$loop->iteration}}</td>
                                     <td>{{$db->kd_barang}}</td>
                                     <td>{{$db->nm_barang}}</td>
-                                    <td>{{$db->hrg_satuan}}</td>
+                                    <td>Rp. @money($db->hrg_satuan)</td>
                                     <td>{{$db->satuan}}</td>
                                     <td>{{$db->jenis_barang}}</td>
                                     <td><a href="{{url('edit-barang', $db->kd_barang)}}" class="btn btn-primary btn-sm">Edit</a> || <a href="{{url('delete-barang', $db->kd_barang)}}" class="btn btn-danger btn-sm">Delete</a></td>

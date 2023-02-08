@@ -34,9 +34,9 @@
                             <tr>
                                 <td>{{$loop->iteration}}</td>
                                 <td>{{$db->nm_barang}}</td>
-                                <td>{{$db->hrg_satuan}}</td>
+                                <td>Rp. @money($db->hrg_satuan)</td>
                                 <td>{{$db->jumlah}}</td>
-                                <td>{{$db->jumlah * $db->hrg_satuan}}</td>
+                                <td>Rp. @money($db->jumlah * $db->hrg_satuan)</td>
                                 <td>{{$db->keterangan}}</td>
 
                             </tr>
@@ -59,9 +59,9 @@
                             <tr>
                                 <td>{{$loop->iteration}}</td>
                                 <td>{{$db['nm_barang']}}</td>
-                                <td>{{$db['hrg_satuan']}}</td>
+                                <td>Rp. @money($db['hrg_satuan'])</td>
                                 <td>{{$db['jml_ret']}}</td>
-                                <td>{{$db['jml_ret'] * $db['hrg_satuan']}}</td>
+                                <td>Rp. @money($db['jml_ret'] * $db['hrg_satuan'])</td>
                                 <td>{{$db['ket_ret']}}</td>
                                 <td>{{$db['tgl']}}</td>
 

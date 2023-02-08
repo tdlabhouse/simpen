@@ -49,8 +49,8 @@
     <table id="customers">
         <tr>
             <th>NO PENGIRIMAN</th>
-            <th>TANGGAL PENGIRIMAN</th>
-            <th>NO PURCHASE ORDER</th>
+            <th>TANGGAL</th>
+            <th>NO PO</th>
             <th>SUPPLIER</th>
             <th>NAMA BARANG</th>
             <th>QTY</th>
@@ -65,8 +65,8 @@
             <td>{{$db->nm_supplier}}</td>
             <td>{{$db->nm_barang}}</td>
             <td>{{$db->jumlah}}</td>
-            <td>{{$db->hrg_satuan}}</td>
-            <td>{{$db->hrg_satuan * $db->jumlah}} </td>
+            <td>Rp. @money($db->hrg_satuan)</td>
+            <td>Rp. @money($db->hrg_satuan * $db->jumlah)</td>
         </tr>
         @endforeach
     </table>
